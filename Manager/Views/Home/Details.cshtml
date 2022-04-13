@@ -1,0 +1,12 @@
+﻿@model HomeDetailsViewModel
+@{ 
+    ViewBag.Title = "Employee Details";
+}
+
+        <h1>@Model.Path</h1>
+        <div style="font-size: 20px;font-weight:bold; text-align: center">
+            Name = @Model.Employee.Name
+            Id = @Model.Employee.Id
+            Email = @Model.Employee.Email
+            Department = @Model.Employee.Department
+        </div>

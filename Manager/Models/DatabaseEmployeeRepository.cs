@@ -1,0 +1,24 @@
+﻿namespace Manager.Models
+{
+    public class DatabaseEmployeeRepository : IEmployeeRepository
+    {
+        private List<Employee> _employeeList = new List<Employee>();
+        public DatabaseEmployeeRepository()
+        {
+
+
+            _employeeList.Add(new Employee() { Id = 1, Name = "Ali", Department = "HR", Email = "Ali@gmail.com" });
+            _employeeList.Add(new Employee() { Id = 2, Name = "khaled", Department = "Tich", Email = "Khaled@gmail.com" });
+            _employeeList.Add(new Employee() { Id = 3, Name = "Sam", Department = "IT", Email = "Sam@gmail.com" });
+
+        }
+        public IEnumerable<Employee> GetAllEmployee()
+        {
+            return _employeeList;
+        }
+        public Employee GetEmployee(int Id)
+        {
+            return _employeeList.FirstOrDefault(emp => emp.Id == Id);
+        }
+    }
+}
