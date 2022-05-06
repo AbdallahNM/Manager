@@ -7,9 +7,8 @@
       "destination": "wwwroot/lib/twitter-bootstrap/"
     },
     {
-      "provider": "cdnjs",
       "library": "jquery@3.6.0",
-      "destination": "wwwroot/jquery/"
+      "destination": "wwwroot/lib/jquery/"
     }
   ]
 }

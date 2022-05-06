@@ -17,15 +17,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 
-app.UseMvc();
+//app.UseMvc();
 
 //app.UseMvcWithDefaultRoute();
 
-//app.UseMvc(route => {
-    //route.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-//});
+app.UseMvc(routes =>
+{
+    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+});
 
-app.MapGet("/", () => "Hello World!");
+//app.MapGet("/", () => "Hello World!");
 
 app.Run();
 #endregion

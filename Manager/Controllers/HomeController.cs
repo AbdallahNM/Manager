@@ -31,12 +31,12 @@ namespace Manager.Controllers
            
         }
         [Route("Details/{id?}")]
-        public ViewResult Details(int? id)
+        public ViewResult Details(int id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
 
             {
-                Employee = _employeeRepository.GetEmployee(id??1),
+                Employee = _employeeRepository.GetEmployee(id),
                 PageTitle = "Employee List",
                 Path = "This PC",
             };

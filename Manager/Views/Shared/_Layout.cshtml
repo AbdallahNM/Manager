@@ -9,13 +9,44 @@
 
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark navbar-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">
+                    <img src="~/images/home.png" width="30" height="30" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" text-light asp-controller="home" asp-action="index">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" text-light asp-controller="home" asp-action="create">Create</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="container">
-        @RenderBody()
+        <main role="main" class="pb-3"
+              @RenderBody()
+              </main>
     </div>
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", true)
-    }
+    <footer class="border-top card-footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Manager   @*-<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </div>
+        </footer>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/js/CustomScript.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required:false)
 
 </body>
 </html>
