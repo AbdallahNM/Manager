@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width ,initial-scale=1" />
     <title>@ViewBag.Title</title>
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/Stylesheet.css" rel="stylesheet" />
@@ -12,9 +12,9 @@
     <div class="container">
         @RenderBody()
     </div>
-    @if (IsSectionDefined("script"))
+    @if (IsSectionDefined("Scripts"))
     {
-        @RenderSection("script", true)
+        @RenderSection("Scripts", true)
     }
 
 </body>

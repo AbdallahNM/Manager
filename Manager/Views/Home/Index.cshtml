@@ -2,32 +2,76 @@
 @{
     ViewBag.Title = "Employee List";
 
- }
-        <table style=width:100%; border: 5px solid black">
-            <caption style="font-size:20px">Emloyee Details</caption>
-            <thead>
-
-                <tr>
-                    <th style="width:10%">Id</th>
-                    <th style="width:40%">Name</th>
-                    <th style="width:10%">Department</th>
-                    <th style="width:40%">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var emp in @Model)
-                {
-                    <tr>
-                        <td>@emp.Id</td>
-                        <td>@emp.Name</td>
-                        <td>@emp.Department</td>
-                        <td>@emp.Email</td>
-                    </tr>
-
-                }
-            </tbody>
-        </table>
-@section scripts 
-{
-<script src="~/js/CustomScript.js">
 }
+
+<div class="row card-deck">
+    @foreach (var emp in Model)
+    {
+        <div class="col-3 card m-3">
+            <div class="card-header">
+                <h3 style="text-align: center;">@emp.Name</h3>
+            </div>
+            <img class="card-img-top" src="~/images/team.jpg" />
+                <div class="card-footer text-center btn-group">
+                    <a href="#" class="btn btn-outline-dark btn-sm">View</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm">Delete</a>
+                </div>
+            </div>
+       
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table style=width:100%; border: 5px solid black">
+        <caption style="font-size:20px">Emloyee Details</caption>
+        <thead>
+
+            <tr>
+                <th style="width:10%">Id</th>
+                <th style="width:40%">Name</th>
+                <th style="width:20%">Department</th>
+                <th style="width:40%">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in @Model)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Department</td>
+                    <td>@emp.Email</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    @section Scripts
+    {
+        <script src="~/js/CustomScript.js"></script>
+    }*@
+
+
