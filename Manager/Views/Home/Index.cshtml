@@ -13,7 +13,9 @@
             </div>
             <img class="card-img-top" src="~/images/team.jpg" />
                 <div class="card-footer text-center btn-group">
-                    <a href="#" class="btn btn-outline-dark btn-sm">View</a>
+                    @Html.ActionLink("View 1","details","home" ,new {id=emp.Id})
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id">View2</a>
+                    <a href="/home/details/@emp.Id" class="btn btn-outline-dark btn-sm">View</a>
                     <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
                     <a href="#" class="btn btn-outline-dark btn-sm">Delete</a>
                 </div>

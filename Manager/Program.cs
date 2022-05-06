@@ -21,8 +21,9 @@ app.UseMvc();
 
 //app.UseMvcWithDefaultRoute();
 
-//app.UseMvc(route => {
-    //route.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+//app.UseMvc(route =>
+//{
+//    route.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 //});
 
 app.MapGet("/", () => "Hello World!");
