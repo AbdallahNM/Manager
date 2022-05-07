@@ -28,7 +28,7 @@ namespace Manager.Controllers
         {
             IEnumerable<Employee> employees = _employeeRepository.GetAllEmployee();
             return View(employees);
-           
+
         }
         [Route("Details/{id?}")]
         public ViewResult Details(int id)
@@ -44,6 +44,11 @@ namespace Manager.Controllers
 
 
         }
+        public ViewResult Create()
+        {
+            
+            return View();
 
+        }
     }
 }
