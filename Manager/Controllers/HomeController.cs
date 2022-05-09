@@ -44,9 +44,19 @@ namespace Manager.Controllers
 
 
         }
+        [HttpGet]
+        [Route("Create")]
         public ViewResult Create()
         {
             
+            return View();
+
+        }
+        [HttpPost]
+        [Route("Create")]
+        public ViewResult Create(Employee employee)
+        {
+            _employeeRepository.CreateEmployee(employee);
             return View();
 
         }

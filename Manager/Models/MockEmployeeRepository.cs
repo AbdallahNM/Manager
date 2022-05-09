@@ -15,6 +15,13 @@
             _employeeList.Add(new Employee() { Id = 6, Name = "John", Department = "Engineer", Email = "Jhon@gmail.com" });
         }
 
+        public Employee CreateEmployee(Employee employee)
+        {
+            employee.Id = _employeeList.Max(emp => emp.Id)+1;
+            _employeeList.Add(employee);
+            return employee;
+        }
+
         public IEnumerable<Employee> GetAllEmployee()
         {
             return _employeeList;

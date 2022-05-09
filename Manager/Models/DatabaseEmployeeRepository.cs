@@ -20,5 +20,12 @@
         {
             return _employeeList.FirstOrDefault(emp => emp.Id == Id);
         }
+
+        public Employee CreateEmployee(Employee employee)
+        {
+            employee.Id = _employeeList.Max(emp => emp.Id) + 1;
+            _employeeList.Add(employee);
+            return employee;
+        }
     }
 }
