@@ -54,10 +54,14 @@ namespace Manager.Controllers
         }
         [HttpPost]
         [Route("Create")]
-        public ViewResult Create(Employee employee)
+        public IActionResult Create(Employee employee)
         {
-            _employeeRepository.CreateEmployee(employee);
-            return View();
+            if(ModelState.IsValid)
+            {
+                var e = _employeeRepository.CreateEmployee(employee);
+                return RedirectToAction("Details",new { id = e.Id });
+            }
+                return View();
 
         }
     }

@@ -5,15 +5,18 @@ namespace Manager.Models
     public class Employee
     {
         [Required]
-        [RegularExpression("1")]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage="Required Field")]
         [MaxLength(50)]
         public string Name { get; set; }
-        [Required]
-        [RegularExpression("emailname@gmail.com")]
+        [Required(ErrorMessage = "Required Field")]
+        [Display(Name = "work mail")]
         public string Email { get; set; }
         [Required]
-        public Dept Department { get; set; }
+        public Dept? Department { get; set; }
+        [Required(ErrorMessage = "Required Field")]
+        [MaxLength(10)]
+        public string PhoneNumber { get; set; }
+        
     }
 }
