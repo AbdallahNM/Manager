@@ -17,6 +17,7 @@ namespace Manager.Models
         [Required(ErrorMessage = "Required Field")]
         [MaxLength(10)]
         public string PhoneNumber { get; set; }
-        
+        public Department Departments { get; set; }
+
     }
 }
