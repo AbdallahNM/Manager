@@ -58,7 +58,7 @@ namespace Manager.Controllers
         {
             if(ModelState.IsValid)
             {
-                var e = _employeeRepository.CreateEmployee(employee);
+                var e = _employeeRepository.Add(employee);
                 return RedirectToAction("Details",new { id = e.Id });
             }
                 return View();

@@ -15,10 +15,33 @@
             _employeeList.Add(new Employee() { Id = 6, Name = "John", PhoneNumber = "0799917704", Department = Dept.Engineer, Email = "Jhon@gmail.com" });
         }
 
-        public Employee CreateEmployee(Employee employee)
+        public Employee Add(Employee employee)
         {
             employee.Id = _employeeList.Max(emp => emp.Id)+1;
             _employeeList.Add(employee);
+            return employee;
+        }
+
+        public Employee Delete(int id)
+        {
+            Employee employee = _employeeList.FirstOrDefault(emp => emp.Id == id);
+            if (employee != null)
+            {
+                _employeeList.Remove(employee);
+            }
+            return employee;
+        }
+
+        public Employee Update(Employee employeeChanges)
+        {
+            Employee employee = _employeeList.FirstOrDefault(emp => emp.Id == employeeChanges.Id);
+            if(employee!= null)
+            {
+                employee.Name = employeeChanges.Name;
+                employee.PhoneNumber = employeeChanges.PhoneNumber;
+                employee.Department = employeeChanges.Department;
+                employee.Email = employeeChanges.Email;
+            }
             return employee;
         }
 
@@ -31,5 +54,7 @@
         {
             return _employeeList.FirstOrDefault(emp => emp.Id == Id);
         }
+
+       
     }
 }
