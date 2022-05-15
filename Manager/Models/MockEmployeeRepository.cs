@@ -7,7 +7,7 @@
         {
 
 
-            _employeeList.Add(new Employee() { Id = 1, Name = "Ali", PhoneNumber = "0777777777", Department = Dept.HR, Email = "Ali@gmail.com" });
+            _employeeList.Add(new Employee() { Id = 1, Name = "Ali" , PhoneNumber = "0777777777", Department = Dept.HR, Email = "Ali@gmail.com" });
             _employeeList.Add(new Employee() { Id = 2, Name = "khaled", PhoneNumber ="0799999999" , Department = Dept.Tich, Email = "Khaled@gmail.com" });
             _employeeList.Add(new Employee() { Id = 3, Name = "Sam", PhoneNumber = "0792346332", Department = Dept.IT, Email = "Sam@gmail.com" });
             _employeeList.Add(new Employee() { Id = 4, Name = "Abeer", PhoneNumber =" 0799277892", Department = Dept.CEO, Email = "Abeer@gmail.com" });
