@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Manager.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Manager.Models
+namespace Manager.ViewModels
 {
-    public class Employee
+    public class EmployeeImageDataUpload
     {
         [Required]
         public int Id { get; set; }
-        [Required(ErrorMessage="Required Field")]
+        [Required(ErrorMessage = "Required Field")]
         [MaxLength(50)]
         public string Name { get; set; }
         [Required(ErrorMessage = "Required Field")]
@@ -20,9 +21,9 @@ namespace Manager.Models
         //public Department Departments { get; set; }
 
         [Required(ErrorMessage = "Required Field")]
-   
-        public int Age { get; set; }
-        public string ImagePath { get; set; }
 
+        public int Age { get; set; }
+
+        public IFormFile Image { get; set; }
     }
 }

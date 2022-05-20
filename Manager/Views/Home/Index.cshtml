@@ -8,19 +8,20 @@
 <div class="row card-deck">
     @foreach (var emp in Model)
     {
-        <div class="col-3 card m-3">
-            <div class="card-header">
-                <h3 style="text-align: center;">@emp.Name</h3>
-            </div>
-            <img class="card-img-top" src="~/images/team.jpg" asp-append-version="true" />
-            <div class="card-footer text-center btn-group">
-                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">View</a>
-                <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
-                <a href="#" class="btn btn-outline-dark btn-sm">Delete</a>
-            </div>
-        </div>
+        var imagepath = "~/images/" + (string.IsNullOrEmpty(emp.ImagePath) ? "team.jpg" : emp.ImagePath);
+<div class="col-3 card m-3">
+    <div class="card-header">
+        <h3 style="text-align: center;">@emp.Name</h3>
+    </div>
+    <img class="card-img-top ImageSize" src="@imagepath" asp-append-version="true" />
+    <div class="card-footer text-center btn-group">
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">View</a>
+        <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
+        <a href="#" class="btn btn-outline-dark btn-sm">Delete</a>
+    </div>
+</div>
 
-    }
+}
 </div>
 
 
