@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Configuration Service
-builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
+builder.Services.AddMvc(option => option.EnableEndpointRouting = false).AddXmlSerializerFormatters();
 builder.Services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
-builder.Services.AddDbContextPool<AppDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ManagerDataBase")));
+builder.Services.AddDbContextPool<AppDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ManagerDataBase")).EnableSensitiveDataLogging());
 #endregion
 var app = builder.Build();
 

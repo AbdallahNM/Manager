@@ -22,7 +22,7 @@ namespace Manager.Models
         [Required(ErrorMessage = "Required Field")]
    
         public int Age { get; set; }
-        public string ImagePath { get; set; }
+        public string ImagePath{ get; set; }
 
     }
 }

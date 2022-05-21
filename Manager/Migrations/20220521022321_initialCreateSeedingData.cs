@@ -4,7 +4,7 @@
 
 namespace Manager.Migrations
 {
-    public partial class TheFirstMig : Migration
+    public partial class initialCreateSeedingData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,8 @@ namespace Manager.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Department = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false)
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,15 +55,12 @@ namespace Manager.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "Age", "Department", "Email", "Name", "PhoneNumber" },
+                columns: new[] { "Id", "Age", "Department", "Email", "ImagePath", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 24, 1, "Ali@gmail.com", "Ali", "0777777777" },
-                    { 2, 33, 5, "Khaled@gmail.com", "khaled", "0792999999" },
-                    { 3, 56, 2, "Sam@gmail.com", "Sam", "0792346332" },
-                    { 4, 40, 4, "Abeer@gmail.com", "Abeer", "0799277892" },
-                    { 5, 22, 2, "Muath@gmail.com", "Muath", "0799978945" },
-                    { 6, 30, 6, "Jhon@gmail.com", "John", "0799917704" }
+                    { 1, 24, 1, "Ali@gmail.com", "", "Ali", "0777777777" },
+                    { 2, 33, 5, "Khaled@gmail.com", "", "khaled", "0792999999" },
+                    { 3, 56, 2, "Sam@gmail.com", "", "Sam", "0792346332" }
                 });
         }
 

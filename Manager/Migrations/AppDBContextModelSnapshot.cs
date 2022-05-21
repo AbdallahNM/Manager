@@ -98,6 +98,10 @@ namespace Manager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -119,6 +123,7 @@ namespace Manager.Migrations
                             Age = 24,
                             Department = 1,
                             Email = "Ali@gmail.com",
+                            ImagePath = "",
                             Name = "Ali",
                             PhoneNumber = "0777777777"
                         },
@@ -128,6 +133,7 @@ namespace Manager.Migrations
                             Age = 33,
                             Department = 5,
                             Email = "Khaled@gmail.com",
+                            ImagePath = "",
                             Name = "khaled",
                             PhoneNumber = "0792999999"
                         },
@@ -137,35 +143,9 @@ namespace Manager.Migrations
                             Age = 56,
                             Department = 2,
                             Email = "Sam@gmail.com",
+                            ImagePath = "",
                             Name = "Sam",
                             PhoneNumber = "0792346332"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Age = 40,
-                            Department = 4,
-                            Email = "Abeer@gmail.com",
-                            Name = "Abeer",
-                            PhoneNumber = "0799277892"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Age = 22,
-                            Department = 2,
-                            Email = "Muath@gmail.com",
-                            Name = "Muath",
-                            PhoneNumber = "0799978945"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Age = 30,
-                            Department = 6,
-                            Email = "Jhon@gmail.com",
-                            Name = "John",
-                            PhoneNumber = "0799917704"
                         });
                 });
 #pragma warning restore 612, 618

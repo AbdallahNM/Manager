@@ -11,7 +11,7 @@ namespace Manager.ViewModels
         [MaxLength(50)]
         public string Name { get; set; }
         [Required(ErrorMessage = "Required Field")]
-        [Display(Name = "work mail")]
+        [Display(Name = "Work Mail")]
         public string Email { get; set; }
         [Required]
         public Dept? Department { get; set; }

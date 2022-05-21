@@ -66,13 +66,13 @@ namespace Manager.Controllers
                 if(model.Image != null)
                 {
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = Guid.NewGuid().ToString() + "-" + model.Image.FileName;
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.Image.CopyTo(new FileStream(filePath, FileMode.Create)); 
                 }
                 Employee newemployee = new Employee
                 {
-                    Name = model.Name, Age = model.Age, Department = model.Department, PhoneNumber = model.PhoneNumber, Email = model.Email, ImagePath= uniqueFileName
+                    Name = model.Name, Age = model.Age, Department = model.Department, PhoneNumber = model.PhoneNumber, Email = model.Email, ImagePath = uniqueFileName
                 };
                 _employeeRepository.Add(newemployee);
                 return RedirectToAction("Details",new { id = newemployee.Id });
