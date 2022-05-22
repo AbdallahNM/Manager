@@ -13,7 +13,7 @@ namespace Manager.Controllers
         private IEmployeeRepository _employeeRepository;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public HomeController(IEmployeeRepository employeeRepository,IHostingEnvironment hostingEnvironment)
+        public HomeController(IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
             this.hostingEnvironment = hostingEnvironment;
@@ -52,32 +52,107 @@ namespace Manager.Controllers
         [Route("Create")]
         public ViewResult Create()
         {
-            
+
             return View();
 
         }
         [HttpPost]
         [Route("Create")]
-        public IActionResult Create(EmployeeImageDataUpload model)
+        public IActionResult Create(EmployeeCreateViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                if(model.Image != null)
+                //string uniqueFileName = null;
+                //if (model.Image != null)
+                //{
+                //    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                //    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                //    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                //    model.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                //}
+                Employee newEmployee = new Employee
                 {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    model.Image.CopyTo(new FileStream(filePath, FileMode.Create)); 
-                }
-                Employee newemployee = new Employee
-                {
-                    Name = model.Name, Age = model.Age, Department = model.Department, PhoneNumber = model.PhoneNumber, Email = model.Email, ImagePath = uniqueFileName
+                    Name = model.Name,
+                    Age = model.Age,
+                    Department = model.Department,
+                    PhoneNumber = model.PhoneNumber,
+                    Email = model.Email,
+                    ImagePath = ProcessUploadFile(model)
                 };
-                _employeeRepository.Add(newemployee);
-                return RedirectToAction("Details",new { id = newemployee.Id });
+                _employeeRepository.Add(newEmployee);
+                return RedirectToAction("Details", new { id = newEmployee.Id });
             }
-                return View();
+            return View();
+
+        }
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Age = employee.Age,
+                Department = employee.Department,
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.Email,
+                ExistingImagePath = employee.ImagePath
+            };
+
+            return View(employeeEditViewModel);
+        }
+        [HttpPost]
+        public IActionResult Edit(EmployeeEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee employee = _employeeRepository.GetEmployee(model.Id);
+                employee.Name = model.Name;
+                employee.Age = model.Age;
+                employee.Department = model.Department;
+                employee.PhoneNumber = model.PhoneNumber;
+                employee.Email = model.Email;
+                if (model.Image != null)
+                {
+                    if (model.ExistingImagePath != null)
+                    {
+                        string filePath = Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingImagePath);
+                        System.IO.File.Delete(filePath);
+                    }
+                    employee.ImagePath = ProcessUploadFile(model);
+                    //}
+                    //string uniqueFileName = ProcessUploadFile(model);
+                    //Employee newemployee = new Employee
+                    //{
+                    //    Name = model.Name,
+                    //    Age = model.Age,
+                    //    Department = model.Department,
+                    //    PhoneNumber = model.PhoneNumber,
+                    //    Email = model.Email,
+                    //    ImagePath = uniqueFileName
+                    //};
+                }
+                _employeeRepository.Update(employee);
+                //return RedirectToAction("Details", new { id = newemployee.Id });
+                return RedirectToAction("Index");
+            }
+            return View();
+
+        }
+
+        private string ProcessUploadFile(EmployeeCreateViewModel model)
+        {
+            string uniqueFileName = null;
+            if (model.Image != null)
+            {
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                model.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+            }
+
+            return uniqueFileName;
 
         }
     }
