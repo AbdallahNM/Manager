@@ -31,6 +31,16 @@
             }
             return employee;
         }
+        public Employee Delete(int id, Employee employee)
+        {
+            employee = _employeeList.FirstOrDefault(emp => emp.Id == id);
+            if (employee != null)
+            {
+                _employeeList.Remove(employee);
+            }
+            return employee;
+        }
+        
 
         public Employee Update(Employee employeeChanges)
         {

@@ -9,19 +9,19 @@
     @foreach (var emp in Model)
     {
         var imagepath = "~/images/" + (string.IsNullOrEmpty(emp.ImagePath) ? "team.jpg" : emp.ImagePath);
-<div class="col-3 card m-3">
-    <div class="card-header">
-        <h3 style="text-align: center;">@emp.Name</h3>
-    </div>
-    <img class="card-img-top ImageSize" src="@imagepath" asp-append-version="true" />
-    <div class="card-footer text-center btn-group">
-        <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">View</a>
-        <a asp-controller="Home" asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">Edit</a>
-        <a href="#" class="btn btn-outline-dark btn-sm">Delete</a>
-    </div>
-</div>
+        <div class="col-3 card m-3">
+            <div class="card-header">
+                <h3 style="text-align: center;">@emp.Name</h3>
+            </div>
+            <img class="card-img-top ImageSize" src="@imagepath" asp-append-version="true" />
+            <div class="card-footer text-center btn-group">
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">View</a>
+                <a asp-controller="Work" asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">Edit</a>
+                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-outline-dark btn-sm">Delete</a>
+            </div>
+        </div>
 
-}
+    }
 </div>
 
 

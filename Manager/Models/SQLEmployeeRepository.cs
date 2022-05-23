@@ -26,6 +26,16 @@ namespace Manager.Models
             }
             return employee;
         }
+        public Employee Delete(int id ,Employee employee)
+        {
+             employee = context.Employees.Find(id);
+            if (employee != null)
+            {
+                context.Employees.Remove(employee);
+                context.SaveChanges();
+            }
+            return employee;
+        }
         public Employee Update(Employee employeeChanges)
         {
             var employee = context.Employees.Attach(employeeChanges);

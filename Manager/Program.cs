@@ -18,14 +18,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 
-//app.UseMvc();
+app.UseMvc();
 
 //app.UseMvcWithDefaultRoute();
 
-app.UseMvc(routes =>
-{
-    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-});
+//app.UseMvc(routes =>
+//{
+//    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+//});
 
 //app.MapGet("/", () => "Hello World!");
 
